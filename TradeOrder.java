@@ -13,7 +13,46 @@ public class TradeOrder
     private int numShares;
     private double price;
 
-    // TODO complete class
+     public TradeOrder(Trader t, String s, boolean b, boolean m, int n, double p) {
+
+        trader = t;
+        symbol = s;
+        buyOrder = b;
+        marketOrder = m;
+        numShares = n;
+        price = p;
+    }
+
+    public Trader getTrader(){
+        return trader;
+    }
+
+    public String getSymbol(){
+
+        return symbol;
+    }
+
+    public boolean getBuyOrder(){
+
+        return buyOrder;
+    }
+    public boolean getMarketOrder(){
+
+        return marketOrder;
+
+    }
+
+    public int getNumShares(){
+
+        return numShares;
+    }
+
+    public double getPrice(){
+
+        return price;
+    }
+
+    public
 
     //
     // The following are for test purposes only
