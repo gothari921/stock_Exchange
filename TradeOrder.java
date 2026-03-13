@@ -52,7 +52,6 @@ public class TradeOrder
         return price;
     }
 
-    public
 
     //
     // The following are for test purposes only
