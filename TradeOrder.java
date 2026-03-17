@@ -32,11 +32,15 @@ public class TradeOrder
         return symbol;
     }
 
-    public boolean getBuyOrder(){
+    public int getShares(){
+        return numShares;
+    }
+
+    public boolean isBuy(){
 
         return buyOrder;
     }
-    public boolean getMarketOrder(){
+    public boolean isMarket(){
 
         return marketOrder;
 
@@ -50,6 +54,21 @@ public class TradeOrder
     public double getPrice(){
 
         return price;
+    }
+
+    public boolean isLimit(){
+        return !marketOrder;
+    }
+
+    public boolean isSell(){
+        return !isBuy();
+    }
+
+    public void subtractShares(int shares){
+        if(shares<=numShares)
+            numShares-=shares;
+        else
+            throw java.IllegalArgumentException;
     }
 
 

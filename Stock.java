@@ -62,6 +62,12 @@ public class Stock
         return sellOrders;
     }
     
+
+    public void placeOrder(TradeOrder order){
+        if()
+    }
+
+
     /**
      * <p>
      * A generic toString implementation that uses reflection to print names and
