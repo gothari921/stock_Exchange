@@ -13,7 +13,7 @@ public class Trader implements Comparable<Trader>
 
     // TODO complete class
 
-
+// big fulk 
     //
     // The following are for test purposes only
     //
