@@ -1,5 +1,6 @@
 import java.lang.reflect.*;
 
+
 /**
  * Represents a buy or sell order for trading a given number of shares of a
  * specified stock.
@@ -68,7 +69,7 @@ public class TradeOrder
         if(shares<=numShares)
             numShares-=shares;
         else
-            throw java.IllegalArgumentException;
+            throw new java.lang.IllegalArgumentException();
     }
 
 
