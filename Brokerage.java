@@ -50,11 +50,30 @@ public class Brokerage implements Login
     
     public void getQuote(String symbol, Trader trader){}
 
-    public int login(String name, String password){}
+    public int login(String name, String password){
 
-    public void logout(Trader trader){}
+        if(!traders.containsKey(name))
+            return -1;
+        else if(!traders.get(name).getPassword().equals(password))
+            return -2;
+        else if(loggedTraders.contains(traders.get(name)))
+            return -3;
+        else{
+            loggedTraders.add(traders.get(name));
+            if(!traders.get(name).hasMessages())
+                traders.get(name).recieveMessage("Welcome to SafeTrade!");
+            return 0;
+        }
 
-    public void placeOrder(TradeOrder order){}
+    }
+
+    public void logout(Trader trader){
+        loggedTraders.remove(trader);
+    }
+
+    public void placeOrder(TradeOrder order){
+        
+    }
 
 
     /**

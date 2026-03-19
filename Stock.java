@@ -16,8 +16,7 @@ public class Stock
     private PriorityQueue<TradeOrder> buyOrders, sellOrders;
 
     // TODO complete class
-
-    
+    protected void executeOrders(){}
     //
     // The following are for test purposes only
     //
@@ -63,9 +62,6 @@ public class Stock
     }
     
 
-    public void placeOrder(TradeOrder order){
-        if()
-    }
 
 
     /**

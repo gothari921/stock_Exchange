@@ -21,6 +21,10 @@ public class Trader implements Comparable<Trader>
     {
         return mailbox;
     }
+
+    public String getPassword(){
+        return password;
+    }
     
     /**
      * <p>
