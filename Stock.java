@@ -17,6 +17,30 @@ public class Stock
 
     // TODO complete class
     protected void executeOrders(){}
+
+    public String getQuote(){}
+
+    public void placeOrder(TradeOrder order){
+        String msg = "New Order:  ";
+        
+        if(order.isBuy()){
+            buyOrders.add(order);
+            msg+="Buy "+order.getSymbol()+"\n"+order.getNumShares()+" shares at "+order.getPrice();
+            order.getTrader().recieveMessage(msg);
+
+        }
+        else if(order.isSell()){
+            sellOrders.add(order);
+            msg+="Sell "+order.getSymbol()+"\n"+order.getNumShares()+" shares at ";
+            if(order.isMarket())
+                msg+="market.";
+            else
+                msg+="limit.";
+            order.getTrader().recieveMessage(msg);
+        }
+        executeOrders();
+    }
+
     //
     // The following are for test purposes only
     //
