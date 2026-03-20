@@ -47,11 +47,6 @@ public class TradeOrder
 
     }
 
-    public int getNumShares(){
-
-        return numShares;
-    }
-
     public double getPrice(){
 
         return price;
