@@ -14,7 +14,7 @@ public class TradeOrder
     private int numShares;
     private double price;
 
-     public TradeOrder(Trader t, String s, boolean b, boolean m, int n, double p) {
+    public TradeOrder(Trader t, String s, boolean b, boolean m, int n, double p) {
 
         trader = t;
         symbol = s;
