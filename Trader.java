@@ -19,7 +19,6 @@ public class Trader implements Comparable<Trader>
         this.myView = null;
         this.mailbox = new LinkedList<String>(); 
 
-
     }
 
     public void recieveMessage(String msg){
@@ -34,10 +33,6 @@ public class Trader implements Comparable<Trader>
         
     }
 
-    public boolean hasMessages()
-    {
-        return !mailbox.isEmpty(); 
-    }
 
 // big fulk 
     //
@@ -48,10 +43,48 @@ public class Trader implements Comparable<Trader>
         return mailbox;
     }
 
-    public String getPassword(){
-        return password;
+    public boolean equals()
+    {
+
     }
-    
+
+    public String getName()
+    {
+        return screenName; 
+    }
+
+    public String getPassword()
+    {
+        return password;     
+    }
+
+    public void getQuote(String symbol)
+    {
+        brokerage.getQuote(symbol, this);
+    }
+
+     public boolean hasMessages()
+    {
+        return !mailbox.isEmpty(); 
+    }
+
+    public void setView(TraderView x)
+    {
+        myView = x; 
+    }
+
+    public void placeOrder()
+    {
+        
+    }
+
+    public void quit()
+    {
+        brokerage.logout(this);
+        myView = null; 
+    }
+
+
     /**
      * <p>
      * A generic toString implementation that uses reflection to print names and
