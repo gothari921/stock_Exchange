@@ -16,6 +16,17 @@ public class Stock
     private PriorityQueue<TradeOrder> buyOrders, sellOrders;
 
     // TODO complete class
+
+    public Stock(String symbol, String company, double p){
+        stockSymbol = symbol;
+        companyName = company;
+        hiPrice = p;
+        lastPrice = p;
+        loPrice = p;
+        volume = 0;
+
+    }
+
     protected void executeOrders(){
     
     }

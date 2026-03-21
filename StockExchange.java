@@ -30,7 +30,7 @@ public class StockExchange
     }
 
     public void listStock(String symbol, String name, double price){
-        Stock stock = new Stock();
+        Stock stock = new Stock(symbol, name, price);
         listedStocks.put(symbol, stock);
     }
 
