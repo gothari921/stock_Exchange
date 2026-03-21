@@ -13,6 +13,10 @@ public class Trader implements Comparable<Trader>
 
     // TODO complete class
 
+    public void recieveMessage(String msg){
+        if()
+    }
+
 // big fulk 
     //
     // The following are for test purposes only

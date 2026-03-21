@@ -21,6 +21,10 @@ public class StockExchange
     {
         return listedStocks;
     }
+
+    public String getQuote(String symbol){
+        return listedStocks.get(symbol).getQuote();
+    }
     
     /**
      * <p>

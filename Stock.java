@@ -16,7 +16,9 @@ public class Stock
     private PriorityQueue<TradeOrder> buyOrders, sellOrders;
 
     // TODO complete class
-    protected void executeOrders(){}
+    protected void executeOrders(){
+        
+    }
 
     public String getQuote(){
         TradeOrder t = sellOrders.peek();

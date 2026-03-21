@@ -48,7 +48,10 @@ public class Brokerage implements Login
         
     }
     
-    public void getQuote(String symbol, Trader trader){}
+    public void getQuote(String symbol, Trader trader){
+        String quote = exchange.getQuote(symbol);
+        trader.recieveMessage(quote);
+    }
 
     public int login(String name, String password){
 
@@ -73,6 +76,12 @@ public class Brokerage implements Login
 
     public void placeOrder(TradeOrder order){
         
+    }
+
+    public boolean isLoggedIn(){}
+
+    public boolean isRegistered(Trader trader){
+        return traders.containsKey(trader.nam)
     }
 
 
