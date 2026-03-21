@@ -23,7 +23,15 @@ public class Trader implements Comparable<Trader>
     }
 
     public void recieveMessage(String msg){
-        if()
+        mailbox.add(msg);
+        if(brokerage.isLoggedIn(this)){
+            while(!mailbox.isEmpty()){
+                String msg2 = mailbox.
+                myView.showMessage(mailbox.peek());
+                mailbox.remove();
+            }
+        }
+        
     }
 
     public boolean hasMessages()

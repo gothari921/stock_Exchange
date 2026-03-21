@@ -42,7 +42,7 @@ public class Brokerage implements Login
             return -2;
         
         else{
-            traders.put(name, new Trader());
+            traders.put(name, new Trader(this, name, password ));
             return 0;
         }
         
@@ -83,7 +83,7 @@ public class Brokerage implements Login
     }
 
     public boolean isRegistered(Trader trader){
-        return traders.containsKey(trader.get)
+        return traders.containsKey(trader.getName());
     }
 
 
