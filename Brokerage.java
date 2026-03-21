@@ -12,6 +12,8 @@ public class Brokerage implements Login
 
     // TODO complete class
 
+    public Brokerage(StockExchange exchange){}
+
     
     //
     // The following are for test purposes only
@@ -30,6 +32,60 @@ public class Brokerage implements Login
     {
         return exchange;
     }
+
+    public int addUser(String name, String password){
+        if(traders.containsKey(name))
+            return -3;
+        else if(!(4<=name.length()&&name.length()<=10))
+            return -1;
+        else if(!(2<=password.length()&&password.length()<=10))
+            return -2;
+        
+        else{
+            traders.put(name, new Trader());
+            return 0;
+        }
+        
+    }
+    
+    public void getQuote(String symbol, Trader trader){
+        String quote = exchange.getQuote(symbol);
+        trader.recieveMessage(quote);
+    }
+
+    public int login(String name, String password){
+
+        if(!traders.containsKey(name))
+            return -1;
+        else if(!traders.get(name).getPassword().equals(password))
+            return -2;
+        else if(loggedTraders.contains(traders.get(name)))
+            return -3;
+        else{
+            loggedTraders.add(traders.get(name));
+            if(!traders.get(name).hasMessages())
+                traders.get(name).recieveMessage("Welcome to SafeTrade!");
+            return 0;
+        }
+
+    }
+
+    public void logout(Trader trader){
+        loggedTraders.remove(trader);
+    }
+
+    public void placeOrder(TradeOrder order){
+        
+    }
+
+    public boolean isLoggedIn(Trader trader){
+        if(loggedTraders.contains(trader))
+    }
+
+    public boolean isRegistered(Trader trader){
+        return traders.containsKey(trader.get)
+    }
+
 
     /**
      * <p>

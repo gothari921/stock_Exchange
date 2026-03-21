@@ -11,15 +11,37 @@ public class Trader implements Comparable<Trader>
     private TraderView myView;
     private Queue<String> mailbox;
 
-    // TODO complete class
+    public Trader (Brokerage brokerage, String screenName, String password)
+    {
+        this.brokerage = brokerage; 
+        this.screenName = screenName; 
+        this.password = password; 
+        this.myView = null;
+        this.mailbox = new LinkedList<String>(); 
 
 
+    }
+
+    public void recieveMessage(String msg){
+        if()
+    }
+
+    public boolean hasMessages()
+    {
+        return !mailbox.isEmpty(); 
+    }
+
+// big fulk 
     //
     // The following are for test purposes only
     //
     protected Queue<String> mailbox()
     {
         return mailbox;
+    }
+
+    public String getPassword(){
+        return password;
     }
     
     /**

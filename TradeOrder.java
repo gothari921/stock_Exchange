@@ -1,5 +1,6 @@
 import java.lang.reflect.*;
 
+
 /**
  * Represents a buy or sell order for trading a given number of shares of a
  * specified stock.
@@ -32,19 +33,18 @@ public class TradeOrder
         return symbol;
     }
 
-    public boolean getBuyOrder(){
+    public int getShares(){
+        return numShares;
+    }
+
+    public boolean isBuy(){
 
         return buyOrder;
     }
-    public boolean getMarketOrder(){
+    public boolean isMarket(){
 
         return marketOrder;
 
-    }
-
-    public int getNumShares(){
-
-        return numShares;
     }
 
     public double getPrice(){
@@ -52,7 +52,21 @@ public class TradeOrder
         return price;
     }
 
-    public
+    public boolean isLimit(){
+        return !marketOrder;
+    }
+
+    public boolean isSell(){
+        return !isBuy();
+    }
+
+    public void subtractShares(int shares){
+        if(shares<=numShares)
+            numShares-=shares;
+        else
+            throw new java.lang.IllegalArgumentException();
+    }
+
 
     //
     // The following are for test purposes only
