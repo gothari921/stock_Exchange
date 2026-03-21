@@ -17,7 +17,7 @@ public class Stock
 
     // TODO complete class
     protected void executeOrders(){
-        
+    
     }
 
     public String getQuote(){
