@@ -13,6 +13,28 @@ public class StockExchange
     
     // TODO complete class
 
+    public String getQuote(String symbol){
+        if(!listedStocks.containsKey(symbol)){
+            return symbol+" not found.";
+        }
+        else{
+            return listedStocks.get(symbol).getQuote();
+        }
+    }
+
+    public void placeOrder(TradeOrder order){
+        String symbol = order.getSymbol()
+        if(listedStocks.containsKey(symbol)){
+            listedStocks.get(symbol).placeOrder(order);
+        }
+    }
+
+    public void listStock(String symbol, String name, double price){
+        Stock stock = new Stock();
+        listedStocks.put(symbol, stock);
+    }
+
+
     
     //
     // The following are for test purposes only
@@ -22,9 +44,7 @@ public class StockExchange
         return listedStocks;
     }
 
-    public String getQuote(String symbol){
-        return listedStocks.get(symbol).getQuote();
-    }
+    
     
     /**
      * <p>

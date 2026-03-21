@@ -75,11 +75,11 @@ public class Brokerage implements Login
     }
 
     public void placeOrder(TradeOrder order){
-        
+        exchange.placeOrder(order);
     }
 
     public boolean isLoggedIn(Trader trader){
-        if(loggedTraders.contains(trader))
+       return loggedTraders.contains(trader.getName());
     }
 
     public boolean isRegistered(Trader trader){
