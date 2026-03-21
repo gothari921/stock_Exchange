@@ -21,6 +21,68 @@ public class Trader implements Comparable<Trader>
 
     }
 
+
+
+// big fulk 
+    //
+    // The following are for test purposes only
+    //
+    protected Queue<String> mailbox()
+    {
+        return mailbox;
+    }
+
+
+    public String getName()
+    {
+        return screenName; 
+    }
+
+    public String getPassword()
+    {
+        return password;     
+    }
+
+    public int compareTo(Trader other)
+    {
+        return screenName.compareToIgnoreCase(other.getName());
+    }
+
+    public boolean equals(Object other)
+    {   
+        if (other.getClass() != this.getClass())
+        {
+            throw new ClassCastException();
+        }  
+        
+        Trader foreign = (Trader) other; 
+
+        int compare = screenName.compareToIgnoreCase(foreign.getName());
+        if (compare == 0)
+        {
+            return true; 
+        }
+        else
+        {
+            return false; 
+        }
+    }
+
+    public void setView(TraderView x)
+    {
+        myView = x; 
+    }
+
+    public boolean hasMessages()
+    {
+        return !mailbox.isEmpty(); 
+    }
+    
+    public void getQuote(String symbol)
+    {
+        brokerage.getQuote(symbol, this);
+    }
+
     public void recieveMessage(String msg){
         mailbox.add(msg);
         if(brokerage.isLoggedIn(this)){
@@ -33,49 +95,9 @@ public class Trader implements Comparable<Trader>
         
     }
 
-
-// big fulk 
-    //
-    // The following are for test purposes only
-    //
-    protected Queue<String> mailbox()
+    public void placeOrder(TradeOrder order)
     {
-        return mailbox;
-    }
-
-    public boolean equals()
-    {
-
-    }
-
-    public String getName()
-    {
-        return screenName; 
-    }
-
-    public String getPassword()
-    {
-        return password;     
-    }
-
-    public void getQuote(String symbol)
-    {
-        brokerage.getQuote(symbol, this);
-    }
-
-     public boolean hasMessages()
-    {
-        return !mailbox.isEmpty(); 
-    }
-
-    public void setView(TraderView x)
-    {
-        myView = x; 
-    }
-
-    public void placeOrder()
-    {
-        
+        brokerage.placeOrder(order);
     }
 
     public void quit()
