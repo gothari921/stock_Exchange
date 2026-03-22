@@ -23,7 +23,7 @@ public class StockExchange
     }
 
     public void placeOrder(TradeOrder order){
-        String symbol = order.getSymbol()
+        String symbol = order.getSymbol();
         if(listedStocks.containsKey(symbol)){
             listedStocks.get(symbol).placeOrder(order);
         }

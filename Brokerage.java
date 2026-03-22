@@ -79,12 +79,10 @@ public class Brokerage implements Login
     }
 
     public boolean isLoggedIn(Trader trader){
-       return loggedTraders.contains(trader.getName());
+       return loggedTraders.contains(trader);
     }
 
-    public boolean isRegistered(Trader trader){
-        return traders.containsKey(trader.getName());
-    }
+   
 
 
     /**

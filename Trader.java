@@ -16,7 +16,7 @@ public class Trader implements Comparable<Trader>
         this.brokerage = brokerage; 
         this.screenName = screenName; 
         this.password = password; 
-        this.myView = null;
+        this.myView = new TraderWindow(this);
         this.mailbox = new LinkedList<String>(); 
 
     }
@@ -87,7 +87,6 @@ public class Trader implements Comparable<Trader>
         mailbox.add(msg);
         if(brokerage.isLoggedIn(this)){
             while(!mailbox.isEmpty()){
-                String msg2 = mailbox.
                 myView.showMessage(mailbox.peek());
                 mailbox.remove();
             }
