@@ -29,6 +29,58 @@ public class Stock
 
     protected void executeOrders(){
     
+        while(!(buyOrders.isEmpty()||sellOrders.isEmpty())){
+            TradeOrder topBuy = buyOrders.peek();
+            TradeOrder topSell = sellOrders.peek();
+            PriceComparator c = new PriceComparator();
+            boolean bothLimit = topBuy.isLimit()&&topSell.isLimit();
+            boolean bothMarket = topBuy.isMarket()&&topSell.isMarket();
+            boolean bhs = topBuy.getPrice()>=topSell.getPrice();
+            int shares = Math.min(topBuy.getShares(), topSell.getShares());
+
+            if(bothMarket){
+                moveShares(topBuy, topSell, shares, lastPrice);
+
+            }
+            else if(bothLimit){
+                if(bhs){
+                    moveShares(topBuy, topSell, shares, topSell.getPrice());
+                }
+                else{
+                    break;
+                }
+            }
+            else if(!(bothLimit||bothMarket)){
+                if(topBuy.isLimit())
+                    moveShares(topBuy, topSell, shares, topBuy.getPrice());
+                else
+                    moveShares(topBuy, topSell, shares, topSell.getPrice());
+            }
+        }
+        
+
+        
+
+
+    }
+
+    private void moveShares(TradeOrder buy, TradeOrder sell, int shares, double price ){
+        buy.subtractShares(shares);
+        sell.subtractShares(shares);
+        if(buy.getShares()==0)
+            buyOrders.remove();
+        if(sell.getShares()==0)
+            sellOrders.remove();
+        updatePrice(price);
+
+    }
+
+    private void updatePrice(double price){
+        lastPrice = price;
+        if(price>hiPrice)
+            hiPrice = price;
+        else if(price<loPrice)
+            loPrice = price;
     }
 
     public String getQuote(){
@@ -54,7 +106,7 @@ public class Stock
             msg+="Bid: market  size: "+t.getShares();
          }
          return msg;
-}
+    }
 
          
     
