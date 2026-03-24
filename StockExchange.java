@@ -11,8 +11,10 @@ public class StockExchange
 {
     private Map<String, Stock> listedStocks;
     
-    // TODO complete class
-
+    // TODO complete class\
+    public StockExchange(){
+        listedStocks = new HashMap<String, Stock>();
+    }
     public String getQuote(String symbol){
         if(!listedStocks.containsKey(symbol)){
             return symbol+" not found.";

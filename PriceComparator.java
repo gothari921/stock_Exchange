@@ -5,26 +5,36 @@ public class PriceComparator implements java.util.Comparator<TradeOrder>
 {
 
     // TODO complete class
-    public int compareOrders(TradeOrder order1, TradeOrder order2)
-    {
-        ; // not done, what is an ascending / descending comparator??? 
-        
-
-        if ((order1.isMarket() == true) && (order2.isMarket() == true))
-        {
-            return 0; 
-        }
-        if (order1.isMarket() == true)
-        {
-            return -1; 
-        }
-
-        if (order2.isMarket() == true)
-        {
-            return 1; 
-        }
-
-        double orderDifference = order1.getPrice() - order2.getPrice(); 
+     boolean ascending;
+    public PriceComparator(){
+        ascending = true;
     }
+    public PriceComparator(boolean asc){
+        ascending = asc;
+    }
+    public int compare(TradeOrder order1, TradeOrder order2){
+        if(order1.isMarket() && order2.isMarket()){
+            return 0;
+       }
+
+        if(order1.isMarket() && order2.isLimit()){
+            return -1;
+       }
+
+       if(order1.isLimit() && order2.isMarket()){
+            return 1;
+       }
+       
+        double cent1 = order1.getPrice() % 1 * 100;
+        double cent2 = order2.getPrice() % 1 * 100;
+        
+       if(ascending){
+        return (int)cent1 - (int)cent2;
+       }
+       else{
+        return (int)cent2-(int)cent1;
+       }
+    }
+
 
 }
