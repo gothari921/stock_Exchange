@@ -83,7 +83,7 @@ public class Trader implements Comparable<Trader>
         brokerage.getQuote(symbol, this);
     }
 
-    public void recieveMessage(String msg){
+    public void receiveMessage(String msg){
         mailbox.add(msg);
         if(brokerage.isLoggedIn(this)){
             while(!mailbox.isEmpty()){
