@@ -12,11 +12,7 @@ public class Brokerage implements Login
 
     // TODO complete class
 
-    public Brokerage(StockExchange exchange){
-        traders = new HashMap<>();
-        exchange = new StockExchange();
-        loggedTraders = new HashSet<>();
-    }
+    public Brokerage(StockExchange exchange){}
 
     
     //
@@ -54,7 +50,7 @@ public class Brokerage implements Login
     
     public void getQuote(String symbol, Trader trader){
         String quote = exchange.getQuote(symbol);
-        trader.receiveMessage(quote);
+        trader.recieveMessage(quote);
     }
 
     public int login(String name, String password){
@@ -68,7 +64,7 @@ public class Brokerage implements Login
         else{
             loggedTraders.add(traders.get(name));
             if(!traders.get(name).hasMessages())
-                traders.get(name).receiveMessage("Welcome to SafeTrade!");
+                traders.get(name).recieveMessage("Welcome to SafeTrade!");
             return 0;
         }
 

@@ -118,7 +118,7 @@ public class Stock
         if(order.isBuy()){
             buyOrders.add(order);
             msg+="Buy "+order.getSymbol()+"(+"+companyName+")"+"\n"+order.getShares()+" shares at "+order.getPrice();
-            order.getTrader().receiveMessage(msg);
+            order.getTrader().recieveMessage(msg);
 
         }
         else if(order.isSell()){
@@ -128,7 +128,7 @@ public class Stock
                 msg+="market.";
             else
                 msg+="limit.";
-            order.getTrader().receiveMessage(msg);
+            order.getTrader().recieveMessage(msg);
         }
         executeOrders();
     }
