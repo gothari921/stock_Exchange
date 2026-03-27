@@ -70,6 +70,10 @@ public class Stock
     private void moveShares(TradeOrder buy, TradeOrder sell, int shares, double price ){
         buy.subtractShares(shares);
         sell.subtractShares(shares);
+        String buyMsg = "You bought: "+shares+" "+buy.getSymbol()+" at "+price+" amt "+money.format(shares*price);
+        String sellMsg = "You sold: "+shares+" "+sell.getSymbol()+" at "+price+" amt "+money.format(shares*price);
+        buy.getTrader().receiveMessage(buyMsg);
+        sell.getTrader().receiveMessage(sellMsg);
         if(buy.getShares()==0)
             buyOrders.remove();
         if(sell.getShares()==0)
