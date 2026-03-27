@@ -35,7 +35,7 @@ public class Stock
         while(!(buyOrders.isEmpty()||sellOrders.isEmpty())){
             TradeOrder topBuy = buyOrders.peek();
             TradeOrder topSell = sellOrders.peek();
-            PriceComparator c = new PriceComparator();
+            PriceComparator co = new PriceComparator();
             boolean bothLimit = topBuy.isLimit()&&topSell.isLimit();
             boolean bothMarket = topBuy.isMarket()&&topSell.isMarket();
             boolean bhs = topBuy.getPrice()>=topSell.getPrice();
@@ -121,7 +121,7 @@ public class Stock
         if(order.isBuy()){
             buyOrders.add(order);
             msg+="Buy "+order.getSymbol()+"(+"+companyName+")"+"\n"+order.getShares()+" shares at "+order.getPrice();
-            order.getTrader().receiveMessage(msg);
+            order.getTrader().recieveMessage(msg);
 
         }
         else if(order.isSell()){
@@ -131,7 +131,7 @@ public class Stock
                 msg+="market.";
             else
                 msg+="limit.";
-            order.getTrader().receiveMessage(msg);
+            order.getTrader().recieveMessage(msg);
         }
         executeOrders();
     }
