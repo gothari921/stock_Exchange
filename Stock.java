@@ -116,21 +116,25 @@ public class Stock
     
 
     public void placeOrder(TradeOrder order){
-        String msg = "New Order:  ";
+        String msg = "New order:  ";
         
         if(order.isBuy()){
             buyOrders.add(order);
-            msg+="Buy "+order.getSymbol()+"(+"+companyName+")"+"\n"+order.getShares()+" shares at "+order.getPrice();
+            msg+="Buy "+order.getSymbol()+" ("+companyName+")"+"\n"+order.getShares()+" shares at ";
+            if(order.isMarket())
+                msg+="market";
+            else
+                msg+="$"+money.format(order.getPrice());
             order.getTrader().receiveMessage(msg);
 
         }
         else if(order.isSell()){
             sellOrders.add(order);
-            msg+="Sell "+order.getSymbol()+"(+"+companyName+")"+"\n"+order.getShares()+" shares at ";
+            msg+="Sell "+order.getSymbol()+" ("+companyName+")"+"\n"+order.getShares()+" shares at ";
             if(order.isMarket())
-                msg+="market.";
+                msg+="market";
             else
-                msg+="limit.";
+                msg+="$"+money.format(order.getPrice());
             order.getTrader().receiveMessage(msg);
         }
         executeOrders();
