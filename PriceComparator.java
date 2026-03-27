@@ -25,8 +25,8 @@ public class PriceComparator implements java.util.Comparator<TradeOrder>
             return 1;
        }
        
-        double cent1 = order1.getPrice() % 1 * 100;
-        double cent2 = order2.getPrice() % 1 * 100;
+        double cent1 = order1.getPrice() * 100;
+        double cent2 = order2.getPrice() * 100;
         
        if(ascending){
         return (int)cent1 - (int)cent2;

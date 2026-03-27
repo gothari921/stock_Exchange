@@ -13,9 +13,9 @@ public class Brokerage implements Login
     // TODO complete class
 
     public Brokerage(StockExchange exchange){
-        traders = new HashMap<>();
-        exchange = new StockExchange();
-        loggedTraders = new HashSet<>();
+        traders = new TreeMap<>();
+        this.exchange = exchange;
+        loggedTraders = new TreeSet<>();
     }
 
     
@@ -38,13 +38,14 @@ public class Brokerage implements Login
     }
 
     public int addUser(String name, String password){
-        if(traders.containsKey(name))
-            return -3;
-        else if(!(4<=name.length()&&name.length()<=10))
-            return -1;
-        else if(!(2<=password.length()&&password.length()<=10))
-            return -2;
         
+        
+        if(name==null||(!(4<=name.length()&&name.length()<=10)))
+            return -1;
+        else if(password==null||!(2<=password.length()&&password.length()<=10))
+            return -2;
+        else if(traders.containsKey(name))
+            return -3;
         else{
             traders.put(name, new Trader(this, name, password ));
             return 0;
@@ -80,6 +81,7 @@ public class Brokerage implements Login
 
     public void placeOrder(TradeOrder order){
         exchange.placeOrder(order);
+        
     }
 
     public boolean isLoggedIn(Trader trader){

@@ -29,6 +29,8 @@ public class StockExchange
         if(listedStocks.containsKey(symbol)){
             listedStocks.get(symbol).placeOrder(order);
         }
+        else
+            order.getTrader().receiveMessage(""+symbol+" not found.");
     }
 
     public void listStock(String symbol, String name, double price){

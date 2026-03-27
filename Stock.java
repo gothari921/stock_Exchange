@@ -24,8 +24,11 @@ public class Stock
         lastPrice = p;
         loPrice = p;
         volume = 0;
+        buyOrders = new PriorityQueue<>(new PriceComparator(false));
+        sellOrders = new PriorityQueue<>(new PriceComparator());
 
     }
+    
 
     protected void executeOrders(){
     

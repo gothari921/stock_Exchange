@@ -85,18 +85,20 @@ public class Trader implements Comparable<Trader>
 
     public void receiveMessage(String msg){
         mailbox.add(msg);
-        if(brokerage.isLoggedIn(this)){
-            while(!mailbox.isEmpty()){
-                myView.showMessage(mailbox.peek());
-                mailbox.remove();
+        if(brokerage!=null){
+            if(brokerage.isLoggedIn(this)){
+                while(!mailbox.isEmpty()){
+                    //myView.showMessage(mailbox.peek());
+                    mailbox.remove();
+                }
             }
         }
-        
     }
 
     public void placeOrder(TradeOrder order)
     {
         brokerage.placeOrder(order);
+        
     }
 
     public void quit()
