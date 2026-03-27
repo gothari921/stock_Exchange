@@ -83,6 +83,21 @@ public class MyTests_Stock {
 
     }
 
+    public static void test6()
+    {
+        Stock stock = new Stock(symbol, companyName, initPrice);
+        Trader seller = new Trader(null, "seller", "fulkonator");
+        Trader buyer = new Trader (null, "buyer", "fulknado");
+        TradeOrder bu = new TradeOrder(buyer, symbol, true, false, 50, 0.0);
+        TradeOrder sell = new TradeOrder(buyer, symbol, true, false, 20, 0.0);
+        stock.placeOrder(bu);
+        stock.placeOrder(sell);
+        System.out.println("actual sell orders are" + stock.getSellOrders().isEmpty());
+        System.out.println("the actual remaining buy shares are " + stock.getBuyOrders().peek().getShares());
+    }
+
+    
+
     
 
 
