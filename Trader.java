@@ -16,7 +16,7 @@ public class Trader implements Comparable<Trader>
         this.brokerage = brokerage; 
         this.screenName = screenName; 
         this.password = password; 
-        this.myView = new TraderWindow(this);
+        this.myView = null;
         this.mailbox = new LinkedList<String>(); 
 
     }

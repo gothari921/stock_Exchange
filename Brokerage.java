@@ -55,7 +55,7 @@ public class Brokerage implements Login
     
     public void getQuote(String symbol, Trader trader){
         String quote = exchange.getQuote(symbol);
-        trader.recieveMessage(quote);
+        trader.receiveMessage(quote);
     }
 
     public int login(String name, String password){
@@ -69,7 +69,7 @@ public class Brokerage implements Login
         else{
             loggedTraders.add(traders.get(name));
             if(!traders.get(name).hasMessages())
-                traders.get(name).recieveMessage("Welcome to SafeTrade!");
+                traders.get(name).receiveMessage("Welcome to SafeTrade!");
             return 0;
         }
 
