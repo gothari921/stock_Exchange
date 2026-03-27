@@ -14,6 +14,7 @@ public class MyTests_Stock {
         test3();
         test4();
         test5(); 
+        test6(); 
     }
 
     public static void testStockConstructor() 
@@ -95,6 +96,7 @@ public class MyTests_Stock {
         System.out.println("actual sell orders are" + stock.getSellOrders().isEmpty());
         System.out.println("the actual remaining buy shares are " + stock.getBuyOrders().peek().getShares());
     }
+
 
     
 
