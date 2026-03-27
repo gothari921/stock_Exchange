@@ -17,6 +17,8 @@ public class MyTests_Brokerage {
         testLogout();
         testGetQuote();
         testPlaceOrder();
+        System.out.println(brokerage);
+        System.out.println(exchange);
     }
 
     private static void testAddUserValid() {
@@ -33,13 +35,13 @@ public class MyTests_Brokerage {
 
     private static void testAddUserNameTooShort() {
         System.out.println("Testing name too short");
-        int result = brokerage.addUser("flk", "stein");
+        int result = brokerage.addUser("flk", "berg");
         System.out.println("Expected: -1     was" + result + "        " + (result == -1));
     }
 
     private static void testAddUserNameTooLong() {
         System.out.println("Testing name too long");
-        int result = brokerage.addUser("fulkenberg", "stein");
+        int result = brokerage.addUser("fulkenberg", "berg");
         System.out.println("Expected: -1     was" + result + "        " + (result == -1));
     }
 
@@ -81,7 +83,7 @@ public class MyTests_Brokerage {
 
     private static void testLogout() {
         System.out.println("Testing logout");
-        Trader trader = brokerage.getTraders().get("fulk");
+        Trader trader = brokerage.getTraders().get("pass");
         brokerage.logout(trader);
         System.out.println("Expected: false     was" + brokerage.isLoggedIn(trader) + "        " + (!brokerage.isLoggedIn(trader)));
     }
@@ -97,9 +99,11 @@ public class MyTests_Brokerage {
 
     private static void testPlaceOrder() {
         System.out.println("Testing placeOrder");
-        Trader trader = brokerage.getTraders().get("fulk");
+        Trader trader = brokerage.getTraders().get("pass");
         TradeOrder order = new TradeOrder(trader, "FULK", true, true, 100, 100.0);
         brokerage.placeOrder(order);
         System.out.println("Has message: " + trader.hasMessages());
     }
+
+    
 }
