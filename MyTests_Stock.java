@@ -11,6 +11,9 @@ public class MyTests_Stock {
         System.out.println("\n===== Stock Tests =====");
         testStockConstructor();
         test2();
+        test3();
+        test4();
+        test5(); 
     }
 
     public static void testStockConstructor() 
@@ -50,6 +53,37 @@ public class MyTests_Stock {
         System.out.println("What we have" + quote);
 
     }
+
+    public static void test4()
+    {
+        Stock stock = new Stock(symbol, companyName, initPrice);
+        Trader buyer = new Trader(null, "buyer", "password");
+        TradeOrder buy = new TradeOrder(buyer, symbol, true, false, 15, 0.0);
+        stock.placeOrder(buy);
+        System.out.println("Expected order sizde is 1");
+        System.out.println("Actual buy orders size is: " + stock.getBuyOrders().size());
+        TradeOrder sell = new TradeOrder(buyer, symbol, false, false, numShares, initPrice);
+        stock.placeOrder(sell);
+        System.out.println("the real number of sell orders is 1");
+        System.out.println("what we predicted is " + stock.getSellOrders().size());
+    }
+
+    public static void test5()
+    {
+        Stock stock = new Stock(symbol, companyName, initPrice);
+        Trader seller = new Trader(null, "seller", "fulkonator");
+        Trader buyer = new Trader (null, "buyer", "fulknado");
+        TradeOrder bu = new TradeOrder(buyer, symbol, true, false, 15, 0.0);
+        TradeOrder sell = new TradeOrder(buyer, symbol, true, false, 15, 0.0);
+        stock.placeOrder(bu);
+        stock.placeOrder(sell);
+        System.out.println("buy orders are " + stock.getBuyOrders().isEmpty());
+        System.out.println("sell order sare" + stock.getSellOrders().isEmpty());
+        System.out.println("our last price is" + stock.getLastPrice());
+
+    }
+
+    
 
 
 
