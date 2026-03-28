@@ -16,6 +16,8 @@ public class MyTests_Stock {
         test5(); 
         test6(); 
         test7();
+        test8();
+        test9(); 
     }
 
     public static void testStockConstructor() 
@@ -109,6 +111,32 @@ public class MyTests_Stock {
         String quote = stock.getQuote();
         System.out.println( "what we got + " + quote);
 
+    }
+
+    public static void test8()
+    {
+    Stock s = new Stock(symbol, companyName, initPrice);
+    Trader buyer  = new Trader(null, "buyer",  "fulkonator");
+    Trader seller = new Trader(null, "seller", "fulksplosion");
+    TradeOrder buy  = new TradeOrder(buyer,  symbol, true,  false, 20, 0.0);
+    TradeOrder sell = new TradeOrder(seller, symbol, false, false, 20, 0.0);
+    s.placeOrder(buy);
+    s.placeOrder(sell);
+    System.out.println("Actual buyOrders empty:   " + s.getBuyOrders().isEmpty());
+    System.out.println("Actual sellOrders empty:   " + s.getSellOrders().isEmpty());
+    }
+
+    public static void test9()
+    {
+    Stock s = new Stock(symbol, companyName, initPrice);
+    Trader buyer  = new Trader(null, "buyer",  "fulkonator");
+    Trader seller = new Trader(null, "seller", "fulksplosion");
+    TradeOrder buy  = new TradeOrder(buyer,  symbol, true,  false, 20, 0.0);
+    TradeOrder sell = new TradeOrder(seller, symbol, false, false, 100, 0.0);
+    s.placeOrder(buy);
+    s.placeOrder(sell);
+    System.out.println("Actual buyOrders empty:   " + s.getBuyOrders().isEmpty());
+    System.out.println("Actual sellOrders empty:   " + s.getSellOrders().isEmpty());
     }
 
 
