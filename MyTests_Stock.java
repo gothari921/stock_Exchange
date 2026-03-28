@@ -15,6 +15,7 @@ public class MyTests_Stock {
         test4();
         test5(); 
         test6(); 
+        test7();
     }
 
     public static void testStockConstructor() 
@@ -95,6 +96,17 @@ public class MyTests_Stock {
         stock.placeOrder(sell);
         System.out.println("actual sell orders are" + stock.getSellOrders().isEmpty());
         System.out.println("the actual remaining buy shares are " + stock.getBuyOrders().peek().getShares());
+    }
+
+    public static void test7()
+    {
+        Stock stock = new Stock(symbol, companyName, initPrice);
+        Trader seller = new Trader(null, "seller", "fulkonator");
+        TradeOrder sell = new TradeOrder(seller, symbol, false, false, 20, 0.0);
+        stock.placeOrder(sell);
+        String quote = stock.getQuote();
+        System.out.println( "what we got + " + quote);
+
     }
 
 
