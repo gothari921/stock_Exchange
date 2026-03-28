@@ -17,8 +17,11 @@ public class MyTests_Brokerage {
         testLogout();
         testGetQuote();
         testPlaceOrder();
-        System.out.println(brokerage);
-        System.out.println(exchange);
+        System.out.println(brokerage.toString());
+        System.out.println(brokerage.getExchange().toString());
+        System.out.println(brokerage.getClass());
+        System.out.println(brokerage.getLoggedTraders());
+        System.out.println(brokerage.getTraders());
     }
 
     private static void testAddUserValid() {
@@ -95,6 +98,7 @@ public class MyTests_Brokerage {
         brokerage.login("pass", "word");
         brokerage.getQuote("FULK", trader);
         System.out.println("Has message: " + trader.hasMessages());
+        brokerage.getExchange();
     }
 
     private static void testPlaceOrder() {

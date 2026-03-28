@@ -3,8 +3,7 @@ public class MyTests_PriceComparator {
     public static void test() {
 
         System.out.println("\n===== PriceComparator Tests =====");
-        int pass = 0;
-        int fail = 0;
+       
 
         PriceComparator defaultComp = new PriceComparator();
         TradeOrder limLow  = new TradeOrder(null, "FULK", true, true, 10, 1.00);
@@ -13,12 +12,12 @@ public class MyTests_PriceComparator {
         if (result < 0){
 
             System.out.println("pass");
-            pass++;
+            
         } 
         else {
 
             System.out.println("pass ");
-            fail++;
+            
         }
 
         PriceComparator temp = new PriceComparator(true);
@@ -26,12 +25,12 @@ public class MyTests_PriceComparator {
         if (result < 0){
 
             System.out.println("pass");
-            pass++;
+            
         } 
         else{
 
             System.out.println("fail");
-            fail++;
+            
         }
 
        
@@ -40,17 +39,17 @@ public class MyTests_PriceComparator {
         if (result > 0) {
 
             System.out.println("pass");
-            pass++;
+            
         } 
         else {
 
             System.out.println("fail");
-            fail++;
+            
         }
 
      
-        TradeOrder market1 = new TradeOrder(null, "AAPL", true, false, 10, 0);
-        TradeOrder market2 = new TradeOrder(null, "AAPL", true, false, 10, 0);
+        TradeOrder market1 = new TradeOrder(null, "FULK", true, false, 10, 0);
+        TradeOrder market2 = new TradeOrder(null, "FULK", true, false, 10, 0);
         result = defaultComp.compare(market1, market2);
         if (result == 0) {
 
