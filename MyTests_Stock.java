@@ -33,6 +33,8 @@ public class MyTests_Stock {
         System.out.println("what the last price should be: " + initPrice);
         System.out.println("what the last price is:   " + stock.getLastPrice());
         System.out.println("Actual volume:" + stock.getVolume());
+        String result = stock.toString();
+        System.out.println(result);
     }
 
     public static void test2()
